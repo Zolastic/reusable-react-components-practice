@@ -38,14 +38,13 @@ interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button({
-  className,
-  size,
-  variant,
-  ...props
-}) {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  { className, size, variant, ...props },
+  ref
+) {
   return (
     <button
+      ref={ref}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props} // the children prop is passed here
     />
